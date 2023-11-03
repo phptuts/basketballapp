@@ -64,3 +64,10 @@ Get mobile navigation working. When you click on the hamburger menu the drop dow
 ```html
 <div className="collapse navbar-collapse" id="navbarSupportedContent"></div>
 ```
+
+## Challenge 5
+
+- Replace all the a tags with NavLink components from react router dom.
+- Add an about page and replace the a tag that has "Link" in it with a NavLink that points to the about page.
+
+Hint: You can pass the bootstrap classes in the className as a string.
