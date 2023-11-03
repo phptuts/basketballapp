@@ -1,6 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Nav = () => {
+  const [showMenu, setShowMenu] = useState(false);
+  function toggleMenu() {
+    setShowMenu((previousValue) => {
+      return !previousValue;
+    });
+  }
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
@@ -15,10 +21,14 @@ const Nav = () => {
           aria-controls="navbarSupportedContent"
           aria-expanded="false"
           aria-label="Toggle navigation"
+          onClick={toggleMenu}
         >
           <span className="navbar-toggler-icon"></span>
         </button>
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+        <div
+          className={showMenu ? "navbar-collapse" : "collapse navbar-collapse"}
+          id="navbarSupportedContent"
+        >
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
               <a className="nav-link active" aria-current="page" href="#">

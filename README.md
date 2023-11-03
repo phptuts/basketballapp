@@ -56,3 +56,11 @@ Create a Nav Component for Navigation menu using bootstrap.
 ```
 
 All the can be found on the [bootstrap website](https://getbootstrap.com/)
+
+## Challenge 4
+
+Get mobile navigation working. When you click on the hamburger menu the drop down show appear. To get it work you will need to add and remove collapse class from this div.
+
+```html
+<div className="collapse navbar-collapse" id="navbarSupportedContent"></div>
+```
