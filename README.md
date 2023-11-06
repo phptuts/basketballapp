@@ -133,3 +133,12 @@ Create a register endpoint with a controller and route.
 - Use the built in json middleware
 - console.log the post body in the controller
 - return the post body back using the json function in the response object.
+
+## Challenge 10
+
+Create validate the post body in the register endpoint using yup library.
+
+- Install the yup library.
+- Validate that email field is required and is an actual email.
+- Validate that password has a min of 6 and a max 30 characters long.
+- Return a 400 with bad request when input is invalid.
