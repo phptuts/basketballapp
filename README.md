@@ -71,3 +71,37 @@ Get mobile navigation working. When you click on the hamburger menu the drop dow
 - Add an about page and replace the a tag that has "Link" in it with a NavLink that points to the about page.
 
 Hint: You can pass the bootstrap classes in the className as a string.
+
+## Challenge 6
+
+Create the registration page and menu item.
+
+- In the App component wrap the Outlet with div that has the container class.
+- Create a registration page with this HTML.
+
+```html
+<div className="row">
+  <div className="col">
+    <h1>Register</h1>
+  </div>
+</div>
+<div className="row">
+  <div className="col">
+    <label for="email" className="form-label">Email</label>
+    <input type="email" id="email" className="form-control" />
+  </div>
+</div>
+<div className="row">
+  <div className="col">
+    <label for="inputPassword5" className="form-label">Password</label>
+    <input type="password" id="inputPassword5" className="form-control" />
+  </div>
+</div>
+<div className="row mt-3">
+  <div className="col">
+    <button className="btn btn-primary w-100">Register</button>
+  </div>
+</div>
+```
+
+- Add a navigation item to the menu that has the word register in it.
