@@ -115,3 +115,12 @@ Create the input you will need to submit the information in the register form to
 - Console.log the result
 
 Note: We are doing this with each to know what we should build on the backend.
+
+## Challenge 8
+
+Create an express server using port 3000.
+
+- There should be one route that has a path "/"
+- Do not create a controller or route for this, just create in the app.js file.
+- Send "basketball backend" from the endpoint
+- Create a postman collection for this endpoint.
