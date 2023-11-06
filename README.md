@@ -124,3 +124,12 @@ Create an express server using port 3000.
 - Do not create a controller or route for this, just create in the app.js file.
 - Send "basketball backend" from the endpoint
 - Create a postman collection for this endpoint.
+
+## Challenge 9
+
+Create a register endpoint with a controller and route.
+
+- The endpoint should be /users
+- Use the built in json middleware
+- console.log the post body in the controller
+- return the post body back using the json function in the response object.
