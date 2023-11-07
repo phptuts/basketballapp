@@ -1,15 +1,48 @@
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [registerSuccess, setRegisterSuccess] = useState(false);
   function onEmailChange(e) {
     setEmail(e.target.value);
   }
 
-  function onSubmit() {
+  async function onSubmit() {
     const registerFormObj = { email, password };
-    console.log(registerFormObj);
+    const response = await fetch("http://localhost:3000/users", {
+      method: "POST",
+      body: JSON.stringify(registerFormObj),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (response.status == 201) {
+      setRegisterSuccess(true);
+      console.log("registered user!");
+    }
+  }
+
+  if (registerSuccess) {
+    return (
+      <>
+        <div className="row">
+          <div className="col">
+            <h1>Register</h1>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col">
+            <div class="alert alert-success" role="alert">
+              Successfully Register!!! Please{" "}
+              <NavLink to="/login">login</NavLink>.
+            </div>
+          </div>
+        </div>
+      </>
+    );
   }
 
   return (

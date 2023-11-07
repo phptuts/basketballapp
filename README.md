@@ -193,3 +193,45 @@ For the register user
 ```
 
 Don't worry about hashing the password or taking the password from the response. We'll do that in the next challenge.
+
+## Challenge 14
+
+Install [Bcrypt](https://www.npmjs.com/package/bcrypt) and encrypt the password and ensure that the password is not being shown in the json.
+
+```json
+{
+  "meta": {
+    "type": "user",
+    "action": "create"
+  },
+  "data": {
+    "id": 4,
+    "email": "noah3@gmail.com",
+    "updatedAt": "2023-11-06T17:31:58.531Z",
+    "createdAt": "2023-11-06T17:31:58.531Z"
+  }
+}
+```
+
+## Challenge 15
+
+Create validation around the email to prevent duplicate emails from appearing. The error message should be on the email. It should look like this.
+
+```json
+{
+  "meta": {
+    "type": "form_errors"
+  },
+  "errors": {
+    "email": ["Email is already taken."]
+  }
+}
+```
+
+## Challenge 16
+
+Connect the register page to backend. If it's successful show a success bootstrap alert with a NavLink to the login page. Look up the html for the bootstrap alert. You will also want to hide the register form as well.
+Don't worry about error messages we'll deal with that in the next challenge. :)
+
+- Install [cors](https://www.npmjs.com/package/cors) npm library and use the middleware.
+- Connect the form to the server using the fetch api.
