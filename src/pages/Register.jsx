@@ -5,6 +5,10 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [registerSuccess, setRegisterSuccess] = useState(false);
+  const [formErrors, setFormErrors] = useState({
+    email: "",
+    password: "",
+  });
   function onEmailChange(e) {
     setEmail(e.target.value);
   }
@@ -21,7 +25,18 @@ const Register = () => {
 
     if (response.status == 201) {
       setRegisterSuccess(true);
-      console.log("registered user!");
+    }
+
+    if (response.status == 400) {
+      const json = await response.json();
+      const erorrs = {};
+      if (json.errors?.email) {
+        erorrs.email = json.errors.email[0];
+      }
+      if (json.errors?.password) {
+        erorrs.password = json.errors.password[0];
+      }
+      setFormErrors(erorrs);
     }
   }
 
@@ -62,8 +77,13 @@ const Register = () => {
             value={email}
             onChange={onEmailChange}
             id="email"
-            className="form-control"
+            className={
+              !formErrors.email ? "form-control" : "form-control is-invalid"
+            }
           />
+          {formErrors.email && (
+            <div class="invalid-feedback">{formErrors.email}</div>
+          )}
         </div>
       </div>
       <div className="row">
@@ -75,9 +95,14 @@ const Register = () => {
             type="password"
             value={password}
             id="inputPassword5"
-            className="form-control"
+            className={
+              !formErrors.password ? "form-control" : "form-control is-invalid"
+            }
             onChange={(e) => setPassword(e.target.value)}
           />
+          {formErrors.password && (
+            <div class="invalid-feedback">{formErrors.password}</div>
+          )}
         </div>
       </div>
       <div className="row mt-3">
