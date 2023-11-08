@@ -282,3 +282,19 @@ Create the input you will need to submit the information in the login form to th
 - Console.log the result
 
 Note: We are doing this with each to know what we should build on the backend.
+
+## Challenge 20
+
+Create the login endpoint and the frontend validation. We'll be creating the jwt token in the next challenge. For now you can return a 200 with an empty response.
+
+- Create a login route and controller
+- Create a validator for the login that will validate that the email is present and the password is present only.
+- Send a 400 status with an empty string for response if there is a validation error.
+- Connect the frontend and backend code.
+- If you get a 200 response direct the user /admin
+- If you get a 400 so the form errors.
+- If you get a 401 status response show this alert box under the form. (test this on the server by manually setting that status to 401)
+
+```html
+
+```
