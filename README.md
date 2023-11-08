@@ -296,5 +296,12 @@ Create the login endpoint and the frontend validation. We'll be creating the jwt
 - If you get a 401 status response show this alert box under the form. (test this on the server by manually setting that status to 401)
 
 ```html
-
+<div className="row">
+  <div className="col">
+    <div class="alert alert-success" role="alert">
+      Successfully Register!!! Please{" "}
+      <NavLink to="/login">login</NavLink>.
+    </div>
+  </div>
+</div>
 ```
