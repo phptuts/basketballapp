@@ -239,3 +239,36 @@ Don't worry about error messages we'll deal with that in the next challenge. :)
 ## Challenge 17
 
 Display bootstrap errors if the api returns a 400 status code. Use the bootstrap documentation. If there are multiple errors just display the first one.
+
+## Challenge 18
+
+Create the login page and menu item.
+
+- Create a Login page with this HTML.
+
+```html
+<div className="row">
+  <div className="col">
+    <h1>Login</h1>
+  </div>
+</div>
+<div className="row">
+  <div className="col">
+    <label for="email" className="form-label">Email</label>
+    <input type="email" id="email" className="form-control" />
+  </div>
+</div>
+<div className="row">
+  <div className="col">
+    <label for="inputPassword5" className="form-label">Password</label>
+    <input type="password" id="inputPassword5" className="form-control" />
+  </div>
+</div>
+<div className="row mt-3">
+  <div className="col">
+    <button className="btn btn-primary w-100">Login</button>
+  </div>
+</div>
+```
+
+- Add a navigation item to the menu that has the word Login in it.
