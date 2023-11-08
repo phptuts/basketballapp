@@ -272,3 +272,13 @@ Create the login page and menu item.
 ```
 
 - Add a navigation item to the menu that has the word Login in it.
+
+## Challenge 19
+
+Create the input you will need to submit the information in the login form to the server.
+
+- Use State to store the data from the inputs in the form.
+- Create an onClick for the button that will create a javascript object with the email and password.
+- Console.log the result
+
+Note: We are doing this with each to know what we should build on the backend.
