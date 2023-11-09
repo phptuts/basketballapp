@@ -305,3 +305,37 @@ Create the login endpoint and the frontend validation. We'll be creating the jwt
   </div>
 </div>
 ```
+
+## Challenge 21
+
+In the login endpoint return a JWT token if the user enters the right email and password. If the user does not enter the right email or password return a 401.
+
+- Create an RSA certificate using https://cryptotools.net/rsagen (4096)
+- Install jsonwebtoken library and follow the instructions here for generating a jwt token. The payload of your token should have the user id and should have alorgithm RS25. The token should expire in 4 hours. Please use the documentation found here: https://www.npmjs.com/package/jsonwebtoken
+
+The postbody should look like this:
+
+```json
+{
+  "meta": {
+    "type": "jwt_token",
+    "action": "login"
+  },
+  "data": {
+    "token": "example_token"
+  }
+}
+```
+
+Once you have a jwt go jwt.io to confirm the payload of your webtoken.
+
+## Challenge 22
+
+Implement useContext hook for authentication with the login page. Show whether the user is logged in or on the home page
+
+- Create an Auth Context that will store whether the user is logged in or not.
+- Change the value stored in that context to true when the user logs in.
+- Redirect the user to the home page
+- useContext hook to show wether the user is logged in on the home page.
+- Save jwt token to localstorage.
+- If the jwt token exists in localstorage default the value stored in the context to true.

@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AuthContext } from "../contexts/auth.context";
 
 const Home = () => {
-  return <div>Home Page</div>;
+  const { isLoggedIn } = useContext(AuthContext);
+  return <div>Home Page: {isLoggedIn ? "auth" : "not auth"}</div>;
 };
 
 export default Home;
