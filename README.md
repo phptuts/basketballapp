@@ -348,3 +348,15 @@ Logout Button and dynamic menu items.
 - Hide Regiser and Login in the nav when the user is loggedin and the logout menu item. Show register and login when the user is not logged in and hide the logout menu item.
 
 Hint: use a button instead of anchor tag for logout menu item.
+
+## Challenge
+
+Create a protected route
+
+- Create an admin page and menu item that is only visible if the user is logged in.
+- Create a component like AuthProvider that will return a children prop only if the user is loggedIn. If the user is not logged in return a Navigate Component from react-router-dom that should redirect the user back home. You will want to use useContext to determine if the user is logged in.
+- When you register the Admin component in the main.jsx file. Wrap it in the component that you created.
+
+```
+element: <ProtectedRoute><Admin></ProtectedRoute>
+```

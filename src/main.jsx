@@ -8,6 +8,8 @@ import About from "./pages/About.jsx";
 import Register from "./pages/Register.jsx";
 import Login from "./pages/Login.jsx";
 import AuthProvider from "./contexts/auth.context.jsx";
+import ProtectedRoute from "./components/ProtectedRoute.jsx";
+import Admin from "./pages/Admin.jsx";
 
 const router = createBrowserRouter([
   {
@@ -29,6 +31,14 @@ const router = createBrowserRouter([
       {
         element: <Login />,
         path: "/login",
+      },
+      {
+        element: (
+          <ProtectedRoute>
+            <Admin />
+          </ProtectedRoute>
+        ),
+        path: "/admin",
       },
     ],
   },

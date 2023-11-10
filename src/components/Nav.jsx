@@ -68,6 +68,11 @@ const Nav = () => {
             {isLoggedIn && (
               <>
                 <li className="nav-item">
+                  <NavLink to="/admin" className="nav-link">
+                    Admin
+                  </NavLink>
+                </li>
+                <li className="nav-item">
                   <button onClick={onLogout} className="nav-link">
                     Logout
                   </button>
