@@ -1,13 +1,23 @@
-import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import { AuthContext } from "../contexts/auth.context";
 
 const Nav = () => {
   const [showMenu, setShowMenu] = useState(false);
+  const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
+  const navigate = useNavigate();
   function toggleMenu() {
     setShowMenu((previousValue) => {
       return !previousValue;
     });
   }
+
+  function onLogout() {
+    setIsLoggedIn(false);
+    localStorage.removeItem("jwt");
+    navigate("/");
+  }
+
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
@@ -41,16 +51,29 @@ const Nav = () => {
                 About
               </NavLink>
             </li>
-            <li className="nav-item">
-              <NavLink to="/register" className="nav-link">
-                Register
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink to="/login" className="nav-link">
-                Login
-              </NavLink>
-            </li>
+            {!isLoggedIn && (
+              <>
+                <li className="nav-item">
+                  <NavLink to="/register" className="nav-link">
+                    Register
+                  </NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink to="/login" className="nav-link">
+                    Login
+                  </NavLink>
+                </li>
+              </>
+            )}
+            {isLoggedIn && (
+              <>
+                <li className="nav-item">
+                  <button onClick={onLogout} className="nav-link">
+                    Logout
+                  </button>
+                </li>
+              </>
+            )}
           </ul>
         </div>
       </div>

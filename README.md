@@ -339,3 +339,12 @@ Implement useContext hook for authentication with the login page. Show whether t
 - useContext hook to show wether the user is logged in on the home page.
 - Save jwt token to localstorage.
 - If the jwt token exists in localstorage default the value stored in the context to true.
+
+## Challenge 23
+
+Logout Button and dynamic menu items.
+
+- Create a logout menu item that redirect the user back to the home page and logs the user out. This should change the value in the auth context. Delete the the jwt token in localstorage.
+- Hide Regiser and Login in the nav when the user is loggedin and the logout menu item. Show register and login when the user is not logged in and hide the logout menu item.
+
+Hint: use a button instead of anchor tag for logout menu item.
