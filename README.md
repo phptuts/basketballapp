@@ -349,7 +349,7 @@ Logout Button and dynamic menu items.
 
 Hint: use a button instead of anchor tag for logout menu item.
 
-## Challenge
+## Challenge 24
 
 Create a protected route
 
@@ -360,3 +360,7 @@ Create a protected route
 ```
 element: <ProtectedRoute><Admin></ProtectedRoute>
 ```
+
+## Challenge 25
+
+Create add game page. It should have a field for the name of the home team, the away team and the time that the game will start. All the fields should be text fields. The route should be /admin/addgame and the game should be wrapped in react router dom form. This will be a protected route so make sure only people logged in can see it.

@@ -73,6 +73,11 @@ const Nav = () => {
                   </NavLink>
                 </li>
                 <li className="nav-item">
+                  <NavLink to="/admin/addgame" className="nav-link">
+                    New Game
+                  </NavLink>
+                </li>
+                <li className="nav-item">
                   <button onClick={onLogout} className="nav-link">
                     Logout
                   </button>

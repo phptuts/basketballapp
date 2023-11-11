@@ -10,6 +10,7 @@ import Login from "./pages/Login.jsx";
 import AuthProvider from "./contexts/auth.context.jsx";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
 import Admin from "./pages/Admin.jsx";
+import AddGame from "./pages/AddGame.jsx";
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,14 @@ const router = createBrowserRouter([
           </ProtectedRoute>
         ),
         path: "/admin",
+      },
+      {
+        element: (
+          <ProtectedRoute>
+            <AddGame />
+          </ProtectedRoute>
+        ),
+        path: "/admin/addgame",
       },
     ],
   },
