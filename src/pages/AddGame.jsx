@@ -1,4 +1,20 @@
-import { Form } from "react-router-dom";
+import { Form, redirect } from "react-router-dom";
+
+/**
+ *
+ * @param {{request: Request}} param0
+ */
+export const addGameAction = async ({ request }) => {
+  const formdata = await request.formData();
+  const json = {
+    hometeam: formdata.get("hometeam"),
+    awayteam: formdata.get("awayteam"),
+    gametime: formdata.get("gametime"),
+  };
+  console.log(json, "server json");
+
+  return redirect("/game/33");
+};
 
 const AddGame = () => {
   return (

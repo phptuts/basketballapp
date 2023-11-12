@@ -364,3 +364,17 @@ element: <ProtectedRoute><Admin></ProtectedRoute>
 ## Challenge 25
 
 Create add game page. It should have a field for the name of the home team, the away team and the time that the game will start. All the fields should be text fields. The route should be /admin/addgame and the game should be wrapped in react router dom form. This will be a protected route so make sure only people logged in can see it.
+
+## Challenge 26
+
+Create an action connected to the addgame page and console.log the object that will turn into json, in later videos. In the action return a redirect to /game/33. Redirect is a function built into react router dom.
+
+The json object should look like this:
+
+```json
+{
+  "hometeam": "Thunder",
+  "awayteam": "Mavs",
+  "gametime": "3:00 EST"
+}
+```
