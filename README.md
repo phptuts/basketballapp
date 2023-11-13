@@ -378,3 +378,94 @@ The json object should look like this:
   "gametime": "3:00 EST"
 }
 ```
+
+## Challenge 27
+
+Create an endpoint for creating a game. It should take in json that looks like the json above. It should validate that each field has between 5 to 20 characters long and is required. (The game time field should have a 50 character max). It should return json that looks like this. We'll be adding authentication middleware in the next challenge.
+
+```json
+{
+  "meta": {
+    "type": "game",
+    "action": "create"
+  },
+  "data": {
+    "hometeam": "Dawgs",
+    "awayteam": "Beangles",
+    "gametime": "Tuesday Nov 3rd at 3pm EST Time"
+  }
+}
+```
+
+## Challenge 28
+
+### Authenication Middleware
+
+Create a middle that will attach the user to the request if the user is logged in. This middleware should be applied to every request and it should never fail a requeest, meaning force it return a 403.
+
+### Authorization Middleware
+
+Create another middleware that will fail a request if the user is not logged in. Apply this middleware to the game endpoints. If this fails it should return a 403 with an empty response.
+
+## Challenge 29
+
+Create a database table for the basketball game. It should have these fields. Once you have created the table try to create a migration for it. Then create a game in the addGame controller. Default the scores to zero and isLive should be false when created.
+
+- id (primary key) auto increment
+- hometeam string
+- awayteam string
+- hometeamScore int nullable
+- awayteamScore int nullable
+- gametime string
+- isLive boolean (set this to false in the controller)
+- isOver boolean (set this to false in the controller)
+- quarter int (nullable)
+- minutes int (nullable)
+- seconds int (nullable)
+- createdAt datetime
+- updatedAt datetime
+
+```json
+{
+  "meta": {
+    "type": "game",
+    "action": "create"
+  },
+  "data": {
+    "id": 1,
+    "hometeam": "Dawgs",
+    "awayteam": "Beangles",
+    "gametime": "Tuesday Nov 3rd at 3pm EST Time",
+    "isOver": false,
+    "isLive": false,
+    "updatedAt": "2023-11-12T19:44:56.953Z",
+    "createdAt": "2023-11-12T19:44:56.953Z",
+    "hometeamScore": null,
+    "awayteamScore": null,
+    "quarter": null,
+    "minutes": null,
+    "seconds": null
+  }
+}
+```
+
+## Challenge 30
+
+Create a userId field on the game table that is a foreign key. You will need to rollback the create game to run the migration. Use the sequelize migration and association documentation to complete. This is a tough challenge so go easy on yourself if you watch the video.
+
+## Challenge 31
+
+Connect the addGame Form to server.
+
+- Create a logout route that will delete the jwt token and return a <Navigate to="/login"> component. Replace the current implemention going to the logout route. In that component have a useEffect hook that will delete the jwt token and isLoggedIn to false using that useContext.
+
+- When you make the request use the Authorization header with the bearer token. It should look like this in headers keys
+
+```js
+'Authorization': 'Bearer ' + jwtokenvariable,
+```
+
+- Connect the http://localhost:3000/game to the game page
+  - if you get a 400 return and display the form errors
+  - if you get a 403 redirect to the logout page
+  - if you get a 200 redirect to the admin page

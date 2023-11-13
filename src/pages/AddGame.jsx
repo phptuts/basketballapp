@@ -1,4 +1,4 @@
-import { Form, redirect } from "react-router-dom";
+import { Form, redirect, useActionData } from "react-router-dom";
 
 /**
  *
@@ -11,12 +11,31 @@ export const addGameAction = async ({ request }) => {
     awayteam: formdata.get("awayteam"),
     gametime: formdata.get("gametime"),
   };
-  console.log(json, "server json");
+  const response = await fetch("http://localhost:3000/game", {
+    method: "POST",
+    body: JSON.stringify(json),
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+      "Content-Type": "application/json",
+    },
+  });
 
-  return redirect("/game/33");
+  if (response.status === 403) {
+    return redirect("/logout");
+  }
+
+  if (response.status === 400) {
+    const responseJson = await response.json();
+    return responseJson.errors;
+  }
+
+  const gameJson = await response.json();
+
+  return redirect(`/game/${gameJson.data.id}`);
 };
 
 const AddGame = () => {
+  const formErrors = useActionData();
   return (
     <>
       <div className="row">
@@ -32,10 +51,17 @@ const AddGame = () => {
             </label>
             <input
               name="hometeam"
-              className="form-control"
               type="text"
               id="hometeam"
+              className={
+                !formErrors?.hometeam
+                  ? "form-control"
+                  : "form-control is-invalid"
+              }
             />
+            {formErrors?.hometeam && (
+              <div class="invalid-feedback">{formErrors.hometeam}</div>
+            )}
           </div>
           <div className="col-6">
             <label htmlFor="awayteam" className="form-label">
@@ -43,10 +69,17 @@ const AddGame = () => {
             </label>
             <input
               name="awayteam"
-              className="form-control"
               type="text"
               id="awayteam"
+              className={
+                !formErrors?.awayteam
+                  ? "form-control"
+                  : "form-control is-invalid"
+              }
             />
+            {formErrors?.awayteam && (
+              <div class="invalid-feedback">{formErrors.awayteam}</div>
+            )}
           </div>
         </div>
         <div className="row">
@@ -56,10 +89,17 @@ const AddGame = () => {
             </label>
             <input
               name="gametime"
-              className="form-control"
+              className={
+                !formErrors?.gametime
+                  ? "form-control"
+                  : "form-control is-invalid"
+              }
               type="text"
               id="gametime"
             />
+            {formErrors?.gametime && (
+              <div class="invalid-feedback">{formErrors.gametime}</div>
+            )}
           </div>
         </div>
         <div className="row mt-3 mb-3">

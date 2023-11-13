@@ -4,18 +4,11 @@ import { AuthContext } from "../contexts/auth.context";
 
 const Nav = () => {
   const [showMenu, setShowMenu] = useState(false);
-  const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
-  const navigate = useNavigate();
+  const { isLoggedIn } = useContext(AuthContext);
   function toggleMenu() {
     setShowMenu((previousValue) => {
       return !previousValue;
     });
-  }
-
-  function onLogout() {
-    setIsLoggedIn(false);
-    localStorage.removeItem("jwt");
-    navigate("/");
   }
 
   return (
@@ -78,9 +71,9 @@ const Nav = () => {
                   </NavLink>
                 </li>
                 <li className="nav-item">
-                  <button onClick={onLogout} className="nav-link">
+                  <NavLink to="/logout" className="nav-link">
                     Logout
-                  </button>
+                  </NavLink>
                 </li>
               </>
             )}
