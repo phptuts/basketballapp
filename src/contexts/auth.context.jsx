@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 export const AuthContext = createContext();
 
@@ -6,8 +6,20 @@ const AuthProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(
     localStorage.getItem("jwt") != null
   );
+  const [email, setEmail] = useState(localStorage.getItem("email"));
+  const [userId, setUserId] = useState(localStorage.getItem("userId"));
+
+  useEffect(() => {
+    localStorage.setItem("email", email);
+  }, [email]);
+  useEffect(() => {
+    localStorage.setItem("userId", userId);
+  }, [userId]);
+
   return (
-    <AuthContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>
+    <AuthContext.Provider
+      value={{ userId, email, setEmail, setUserId, isLoggedIn, setIsLoggedIn }}
+    >
       {children}
     </AuthContext.Provider>
   );

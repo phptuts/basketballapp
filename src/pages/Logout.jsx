@@ -3,11 +3,13 @@ import { Navigate } from "react-router-dom";
 import { AuthContext } from "../contexts/auth.context";
 
 const Logout = () => {
-  const { setIsLoggedIn } = useContext(AuthContext);
+  const { setIsLoggedIn, setEmail, setUserId } = useContext(AuthContext);
 
   useEffect(() => {
     localStorage.removeItem("jwt");
     setIsLoggedIn(false);
+    setEmail("");
+    setUserId("");
   }, []);
 
   return <Navigate to="/login" />;

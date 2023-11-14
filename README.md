@@ -469,3 +469,44 @@ Connect the addGame Form to server.
   - if you get a 400 return and display the form errors
   - if you get a 403 redirect to the logout page
   - if you get a 200 redirect to the admin page
+
+## Challenge 32
+
+Create the get game endpoint.
+
+This should be a public endpoint, so will be need adjust the middleware configs. It should return a single. If there is no game it return a 404 status.
+
+The route should look like this:
+
+GET /game/3
+
+```json
+{
+  "meta": {
+    "type": "game",
+    "action": "get"
+  },
+  "data": {
+    "id": 5,
+    "hometeam": "asdfs",
+    "awayteam": "asdfs",
+    "gametime": "ssssss",
+    "isLive": false,
+    "isOver": false,
+    "hometeamScore": null,
+    "awayteamScore": null,
+    "quarter": null,
+    "minutes": null,
+    "seconds": null,
+    "createdAt": "2023-11-13T06:35:15.914Z",
+    "updatedAt": "2023-11-13T06:35:15.914Z",
+    "userId": 7
+  }
+}
+```
+
+## Challenge 33
+
+Update AuthContext to store userId and email.
+
+Update the login endpoint and AuthContext to store the email address and user id in addition to if the user is logged in. You will need to modify both the node server and the react app. You will want to store these values in localstorage.

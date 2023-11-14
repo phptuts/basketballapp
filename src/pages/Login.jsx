@@ -6,7 +6,11 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loginFailed, setLoginFailed] = useState(false);
-  const { setIsLoggedIn } = useContext(AuthContext);
+  const {
+    setIsLoggedIn,
+    setEmail: setEmailContext,
+    setUserId,
+  } = useContext(AuthContext);
   const [formErrors, setFormErrors] = useState({
     email: "",
     password: "",
@@ -27,6 +31,8 @@ const Login = () => {
     if (response.status == 200) {
       const json = await response.json();
       localStorage.setItem("jwt", json.data.token);
+      setEmailContext(json.data.email);
+      setUserId(json.data.userId);
       setIsLoggedIn(true);
       navigate("/");
       return;
