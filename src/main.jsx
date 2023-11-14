@@ -12,6 +12,7 @@ import ProtectedRoute from "./components/ProtectedRoute.jsx";
 import Admin from "./pages/Admin.jsx";
 import AddGame, { addGameAction } from "./pages/AddGame.jsx";
 import Logout from "./pages/Logout.jsx";
+import UpdateScore, { updateScoreLoader } from "./pages/UpdateScore.jsx";
 
 const router = createBrowserRouter([
   {
@@ -45,6 +46,15 @@ const router = createBrowserRouter([
           </ProtectedRoute>
         ),
         path: "/admin",
+      },
+      {
+        element: (
+          <ProtectedRoute>
+            <UpdateScore />
+          </ProtectedRoute>
+        ),
+        path: "/admin/game/:gameId/updatescore",
+        loader: updateScoreLoader,
       },
       {
         element: (

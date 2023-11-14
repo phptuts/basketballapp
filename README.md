@@ -509,4 +509,70 @@ GET /game/3
 
 Update AuthContext to store userId and email.
 
-Update the login endpoint and AuthContext to store the email address and user id in addition to if the user is logged in. You will need to modify both the node server and the react app. You will want to store these values in localstorage.
+Update the login endpoint and AuthContext to store the email address and user id in addition to if the user is logged in. You will need to modify both the node server and the react app. You will want to store these values in localstorage. When the user logs out be sure to unset these values in localstorage and in authcontext.
+
+## Challenge 34
+
+Create the update score game page.
+
+- The page's url should look like this: /admin/game/5/updatescore
+- The page should have these inputs:
+  - away score
+  - home score
+  - minutes
+  - seconds
+  - quarters
+- Their should be load that loads the game's information.
+  - If the user is not logged in or does not have a user id that matches the game log the user out. I did this in a useEffect because you can't load the context in the loader.
+- Use the game to populate the form with data that there. Test this out by manually setting the data in the database.
+
+### HTML
+
+```jsx
+<>
+  <div className="row">
+    <div className="col">
+      <h1>Update Score</h1>
+    </div>
+  </div>
+  <div className="row">
+    <div className="col-6">
+      <label htmlFor="hometeamScore" className="form-label">
+        Home Team Score
+      </label>
+      <input type="number" id="hometeamScore" className="form-control" />
+    </div>
+    <div className="col-6">
+      <label htmlFor="awayteamScore" className="form-label">
+        Away Team Score
+      </label>
+      <input type="number" id="awayteamScore" className="form-control" />
+    </div>
+  </div>
+  <div className="row">
+    <div className="col">
+      <label htmlFor="quarter" className="form-label">
+        Quater
+      </label>
+      <input type="number" id="quarter" className="form-control" />
+    </div>
+    <div className="col">
+      <label htmlFor="minutes" className="form-label">
+        Minutes
+      </label>
+      <input type="number" id="minutes" className="form-control" />
+    </div>
+    <div className="col">
+      <label htmlFor="seconds" className="form-label">
+        Seconds
+      </label>
+      <input type="number" id="seconds" className="form-control" />
+    </div>
+  </div>
+  <div className="row mt-3">
+    <div className="col">
+      <button className="btn btn-primary w-100">Update Score</button>
+    </div>
+  </div>
+</>
+```
