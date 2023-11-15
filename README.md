@@ -576,3 +576,53 @@ Create the update score game page.
   </div>
 </>
 ```
+
+## Challenge 34
+
+Create update score endpoint
+
+- url: PUT /game/33/updatescore
+- the user must be logged in:
+- should have these json fields:
+  - away score min -> 5 , max -> 200, required
+  - home score min -> 5 , max -> 200, required
+  - minutes min -> 0, max -> 15, required
+  - seconds min -> 0, max -> 60, required
+  - quarters min 1, max -> 4 not required
+- should throw a 403 if the user is trying to update a game they did not create.
+- should return a response that looks like this:
+
+```json
+{
+  "meta": {
+    "type": "game",
+    "action": "update_score"
+  },
+  "data": {
+    "id": 5,
+    "hometeam": "asdfs",
+    "awayteam": "asdfs",
+    "gametime": "ssssss",
+    "isLive": false,
+    "isOver": false,
+    "hometeamScore": 34,
+    "awayteamScore": 33,
+    "quarter": 1,
+    "minutes": 2,
+    "seconds": 15,
+    "createdAt": "2023-11-13T06:35:15.914Z",
+    "updatedAt": "2023-11-15T04:49:48.153Z",
+    "userId": 7
+  }
+}
+```
+
+## Challenge 35
+
+Connect the updatescore endpoint to the updatescore form. Use the react toastify library to show if the form was successfully submitted. https://fkhadra.github.io/react-toastify/installation
+
+### Bonus
+
+Pass a some text in for the number field. You will notice you get an ulgy error use this link and typeError to fix it on the node server.
+
+https://github.com/jquense/yup/issues/211#issuecomment-464253977

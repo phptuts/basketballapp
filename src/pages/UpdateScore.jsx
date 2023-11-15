@@ -1,6 +1,12 @@
 import { useContext, useEffect, useState } from "react";
-import { redirect, useLoaderData, useNavigate } from "react-router-dom";
+import {
+  redirect,
+  useLoaderData,
+  useNavigate,
+  useParams,
+} from "react-router-dom";
 import { AuthContext } from "../contexts/auth.context";
+import { toast } from "react-toastify";
 
 export const updateScoreLoader = async ({ params }) => {
   const gameResponse = await fetch(
@@ -16,6 +22,7 @@ export const updateScoreLoader = async ({ params }) => {
 const UpdateScore = () => {
   const gameData = useLoaderData();
   const { userId } = useContext(AuthContext);
+  const { gameId } = useParams();
   const navigate = useNavigate();
   const [formData, setSetFormData] = useState({
     minutes: "",
@@ -24,6 +31,7 @@ const UpdateScore = () => {
     hometeamScore: "",
     awayteamScore: "",
   });
+  const [formErrors, setFormErrors] = useState({});
 
   useEffect(() => {
     if (!gameData || !userId) return;
@@ -49,6 +57,27 @@ const UpdateScore = () => {
     });
   }
 
+  async function onSubmit() {
+    const url = `http://localhost:3000/game/${gameId}/updatescore`;
+    const response = await fetch(url, {
+      method: "PUT",
+      body: JSON.stringify(formData),
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (response.status === 200) {
+      toast("Game updated!");
+    }
+
+    if (response.status === 400) {
+      const json = await response.json();
+      setFormErrors(json.errors);
+    }
+  }
+
   return (
     <>
       <div className="row">
@@ -66,8 +95,15 @@ const UpdateScore = () => {
             value={formData.hometeamScore}
             type="number"
             id="hometeamScore"
-            className="form-control"
+            className={
+              !formErrors?.hometeamScore
+                ? "form-control"
+                : "form-control is-invalid"
+            }
           />
+          {formErrors?.hometeamScore && (
+            <div class="invalid-feedback">{formErrors.hometeamScore}</div>
+          )}
         </div>
         <div className="col-6">
           <label htmlFor="awayteamScore" className="form-label">
@@ -78,8 +114,15 @@ const UpdateScore = () => {
             type="number"
             value={formData.awayteamScore}
             id="awayteamScore"
-            className="form-control"
+            className={
+              !formErrors?.awayteamScore
+                ? "form-control"
+                : "form-control is-invalid"
+            }
           />
+          {formErrors?.awayteamScore && (
+            <div class="invalid-feedback">{formErrors.awayteamScore}</div>
+          )}
         </div>
       </div>
       <div className="row">
@@ -92,8 +135,13 @@ const UpdateScore = () => {
             type="number"
             value={formData.quarter}
             id="quarter"
-            className="form-control"
+            className={
+              !formErrors?.quarter ? "form-control" : "form-control is-invalid"
+            }
           />
+          {formErrors?.quarter && (
+            <div class="invalid-feedback">{formErrors.quarter}</div>
+          )}
         </div>
         <div className="col">
           <label htmlFor="minutes" className="form-label">
@@ -104,8 +152,13 @@ const UpdateScore = () => {
             value={formData.minutes}
             type="number"
             id="minutes"
-            className="form-control"
+            className={
+              !formErrors?.minutes ? "form-control" : "form-control is-invalid"
+            }
           />
+          {formErrors?.minutes && (
+            <div class="invalid-feedback">{formErrors.minutes}</div>
+          )}
         </div>
         <div className="col">
           <label htmlFor="seconds" className="form-label">
@@ -116,13 +169,20 @@ const UpdateScore = () => {
             value={formData.seconds}
             type="number"
             id="seconds"
-            className="form-control"
+            className={
+              !formErrors?.seconds ? "form-control" : "form-control is-invalid"
+            }
           />
+          {formErrors?.seconds && (
+            <div class="invalid-feedback">{formErrors.seconds}</div>
+          )}
         </div>
       </div>
       <div className="row mt-3">
         <div className="col">
-          <button className="btn btn-primary w-100">Update Score</button>
+          <button onClick={onSubmit} className="btn btn-primary w-100">
+            Update Score
+          </button>
         </div>
       </div>
     </>
