@@ -626,3 +626,7 @@ Connect the updatescore endpoint to the updatescore form. Use the react toastify
 Pass a some text in for the number field. You will notice you get an ulgy error use this link and typeError to fix it on the node server.
 
 https://github.com/jquense/yup/issues/211#issuecomment-464253977
+
+## Challenge 36
+
+When you submit a form with an error and resubmit the form without an error the error validation message on the form should go away.

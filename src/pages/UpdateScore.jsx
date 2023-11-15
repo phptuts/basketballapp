@@ -58,6 +58,7 @@ const UpdateScore = () => {
   }
 
   async function onSubmit() {
+    setFormErrors({});
     const url = `http://localhost:3000/game/${gameId}/updatescore`;
     const response = await fetch(url, {
       method: "PUT",
