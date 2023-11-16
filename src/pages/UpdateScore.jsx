@@ -8,7 +8,7 @@ import {
 import { AuthContext } from "../contexts/auth.context";
 import { toast } from "react-toastify";
 
-export const updateScoreLoader = async ({ params }) => {
+export const gameLoader = async ({ params }) => {
   const gameResponse = await fetch(
     `http://localhost:3000/game/${params.gameId}`
   );

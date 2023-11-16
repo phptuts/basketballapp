@@ -630,3 +630,62 @@ https://github.com/jquense/yup/issues/211#issuecomment-464253977
 ## Challenge 36
 
 When you submit a form with an error and resubmit the form without an error the error validation message on the form should go away.
+
+## Challenge 37
+
+Create the edit game endpoint.
+
+PUT /game/33
+
+```json
+{
+  "hometeam": "Reds",
+  "awayteam": "Blues",
+  "gametime": "2pm Friday"
+}
+```
+
+- If user is not logged in return a response with status 404
+- If the game does not exist return a response with status 404
+- If the game was not created by the user return a response with status 404
+- Otherwise update the game and return the game back.
+
+The response should look like this:
+
+```json
+{
+  "meta": {
+    "type": "game",
+    "action": "update_game"
+  },
+  "data": {
+    "id": 5,
+    "hometeam": "asdfs",
+    "awayteam": "asdfs",
+    "gametime": "ssssss",
+    "isLive": false,
+    "isOver": false,
+    "hometeamScore": 34,
+    "awayteamScore": 33,
+    "quarter": 1,
+    "minutes": 2,
+    "seconds": 15,
+    "createdAt": "2023-11-13T06:35:15.914Z",
+    "updatedAt": "2023-11-15T04:49:48.153Z",
+    "userId": 7
+  }
+}
+```
+
+## Challenge 38
+
+Create the update game page.
+
+- Create a component called GameForm that will where you will copy the JSX from AddGame Component
+  - The component should have title prop and game data prop
+    - Use the title prop to populate the h1 and button text
+    - Use the gameData prop to populate the form. You can pass in the [defaultValue](https://react.dev/reference/react-dom/components/input#providing-an-initial-value-for-an-input) in the input. Hint use the elvic operator "?".
+  - Reuse the loader you created in updateScore to get the game data to edit form.
+  - See if you can create function that will be shared by both your editGame and and addGame forms. Hit should take in request, url, http and method
+
+This is a big challenge take your time.
