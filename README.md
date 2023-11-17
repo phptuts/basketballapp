@@ -689,3 +689,14 @@ Create the update game page.
   - See if you can create function that will be shared by both your editGame and and addGame forms. Hit should take in request, url, http and method
 
 This is a big challenge take your time.
+
+## Challenge 39
+
+Create the game page
+
+- url /game/:gameId
+- use the game loader
+- If the game is over display something like final score.
+- If the game is isLive display something like live
+- If the game is isLive or over display the score next to the team names.
+- If both are not set show the game time

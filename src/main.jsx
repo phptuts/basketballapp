@@ -14,6 +14,7 @@ import AddGame, { addGameAction } from "./pages/AddGame.jsx";
 import Logout from "./pages/Logout.jsx";
 import UpdateScore, { gameLoader } from "./pages/UpdateScore.jsx";
 import UpdateGame, { updateGameAction } from "./pages/UpdateGame.jsx";
+import Game from "./pages/Game.jsx";
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,11 @@ const router = createBrowserRouter([
       {
         element: <Logout />,
         path: "/logout",
+      },
+      {
+        element: <Game />,
+        path: "/game/:gameId",
+        loader: gameLoader,
       },
       {
         element: (
