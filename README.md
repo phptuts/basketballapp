@@ -700,3 +700,31 @@ Create the game page
 - If the game is isLive display something like live
 - If the game is isLive or over display the score next to the team names.
 - If both are not set show the game time
+
+## Challenge 40
+
+Create an two endpoints on the node. Try to re use the update function to do this. You will have to refactor it a little bit. This includes and rearranging the parameters of the function.
+
+### Starting the game
+
+PUT /game/:id/start
+
+- requires authenication
+- requires that the user created the game
+- set isLive to true and isOver to false
+
+### Ends the game
+
+PUT /game/:id/end
+
+- requires authenication
+- requires that the user created the game
+- set isLive to true and isOver to false
+
+## Challenge 41
+
+On the update score page if the game has not started only show a button that says start game. Once the user clicks on the button call the start game endpoint and show the update score form.
+
+It game has started show a button to end the game that will call the end game endpoint.
+
+In this challenge I was able to consolidate everything into one function for all the requests. If you are feeling brave you can do that as a bonus.

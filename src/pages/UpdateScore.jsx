@@ -24,6 +24,7 @@ const UpdateScore = () => {
   const { userId } = useContext(AuthContext);
   const { gameId } = useParams();
   const navigate = useNavigate();
+  const [hideForm, setHideForm] = useState(false);
   const [formData, setSetFormData] = useState({
     minutes: "",
     seconds: "",
@@ -48,6 +49,7 @@ const UpdateScore = () => {
       hometeamScore: gameData.hometeamScore ?? "",
       awayteamScore: gameData.awayteamScore ?? "",
     });
+    setHideForm(!gameData.isOver && !gameData.isLive);
   }, [gameData, userId]);
 
   function setSingleFormData(value, property) {
@@ -57,26 +59,72 @@ const UpdateScore = () => {
     });
   }
 
+  async function onStartGame() {
+    await updateGame(
+      `http://localhost:3000/game/${gameId}/start`,
+      "Game Started!"
+    );
+    setHideForm(false);
+  }
+
+  async function onEndGame() {
+    await updateGame(`http://localhost:3000/game/${gameId}/end`, "Game Ended!");
+  }
+
   async function onSubmit() {
+    await updateGame(
+      `http://localhost:3000/game/${gameId}/updatescore`,
+      "Game updated!",
+      formData
+    );
+  }
+
+  async function updateGame(url, successMessage, postData = null) {
     setFormErrors({});
-    const url = `http://localhost:3000/game/${gameId}/updatescore`;
-    const response = await fetch(url, {
+    const requestOptions = {
       method: "PUT",
-      body: JSON.stringify(formData),
       headers: {
         Authorization: `Bearer ${localStorage.getItem("jwt")}`,
         "Content-Type": "application/json",
       },
-    });
+    };
+
+    if (postData) {
+      requestOptions["body"] = JSON.stringify(postData);
+    }
+    const response = await fetch(url, requestOptions);
 
     if (response.status === 200) {
-      toast("Game updated!");
+      toast(successMessage);
     }
 
     if (response.status === 400) {
       const json = await response.json();
       setFormErrors(json.errors);
     }
+
+    if (response.status == 403) {
+      navigate("/logout");
+    }
+  }
+
+  if (hideForm) {
+    return (
+      <>
+        <div className="row">
+          <div className="col">
+            <h1>Update Score</h1>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col">
+            <button onClick={onStartGame} className="w-100 btn btn-success">
+              Start Game
+            </button>
+          </div>
+        </div>
+      </>
+    );
   }
 
   return (
@@ -183,6 +231,13 @@ const UpdateScore = () => {
         <div className="col">
           <button onClick={onSubmit} className="btn btn-primary w-100">
             Update Score
+          </button>
+        </div>
+      </div>
+      <div className="row mt-3">
+        <div className="col">
+          <button onClick={onEndGame} className="btn btn-danger w-100">
+            End Game
           </button>
         </div>
       </div>
