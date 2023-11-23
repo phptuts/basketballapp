@@ -9,7 +9,7 @@ import Register from "./pages/Register.jsx";
 import Login from "./pages/Login.jsx";
 import AuthProvider from "./contexts/auth.context.jsx";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
-import Admin from "./pages/Admin.jsx";
+import Admin, { adminLoader } from "./pages/Admin.jsx";
 import AddGame, { addGameAction } from "./pages/AddGame.jsx";
 import Logout from "./pages/Logout.jsx";
 import UpdateScore, { gameLoader } from "./pages/UpdateScore.jsx";
@@ -53,6 +53,7 @@ const router = createBrowserRouter([
           </ProtectedRoute>
         ),
         path: "/admin",
+        loader: adminLoader,
       },
       {
         element: (

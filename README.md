@@ -728,3 +728,57 @@ On the update score page if the game has not started only show a button that say
 It game has started show a button to end the game that will call the end game endpoint.
 
 In this challenge I was able to consolidate everything into one function for all the requests. If you are feeling brave you can do that as a bonus.
+
+## Challenge 42
+
+Create a paginated game endpoint. Use this documentation to create the ednpoint. https://sequelize.org/docs/v6/core-concepts/model-querying-finders/#findandcountall
+
+GET /game?page=1&user_id=3
+
+- The page size should be 10, meaning 10 games per request loaded.
+- Use a query parameter named page to control the page number. It should start at 1. `?page=2`
+- Use a query parameter to specify the user id you want to filter the games by `user_id=3`
+- This should be an open endpoint that everyone can call.
+- All query parameters should be optional.
+- Adjust the page size to test all scenarios.
+
+### Payload
+
+```json
+{
+  "meta": {
+    "type": "game_list",
+    "action": "get_game_list",
+    "page": 2,
+    "page_size": 10,
+    "number_of_pages": 3,
+    "is_last_page": false,
+    "is_first_page": false
+  },
+  "data": [...]
+}
+```
+
+## Challenge 43
+
+Create an admin page that uses that shows some games with pagination.
+
+Adjust the sequelize configuration to use this on the startup. You can adjust it in the init.js file
+
+```js
+const sequelize = new Sequelize(process.env.DB_CONNECTION_STRING, {
+  pool: {
+    max: 5,
+    min: 0,
+    idle: 10000,
+  },
+});
+```
+
+- Change the page size to 2 to make easier to have more than one page.
+- create a loader for the admin page that will use local storage to get the userId and the request to get page param is available.
+- Display the titles in a list of pages
+- Create 2 nav links to test that the pagination works.
+
+Hint use this article to see if you can find away to send the query params without manually constructing them in the string.
+https://webtips.dev/solutions/send-query-params-in-get-and-post-in-javascript
