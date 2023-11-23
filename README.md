@@ -782,3 +782,7 @@ const sequelize = new Sequelize(process.env.DB_CONNECTION_STRING, {
 
 Hint use this article to see if you can find away to send the query params without manually constructing them in the string.
 https://webtips.dev/solutions/send-query-params-in-get-and-post-in-javascript
+
+## Challenge 44
+
+Create a table to display the admin page. Each row should have an id, home team, an away team, game time, edit link, and update score link.

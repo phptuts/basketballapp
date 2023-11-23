@@ -32,11 +32,46 @@ const Admin = () => {
       </div>
       <div className="row">
         <div className="col">
-          <ul>
-            {response.data.map((g) => {
-              return <li key={g.id}>{g.hometeam}</li>;
-            })}
-          </ul>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Home Team</th>
+                <th>Away Team</th>
+                <th>Game Time</th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {response.data.map((g) => {
+                return (
+                  <tr key={g.id}>
+                    <td>{g.id}</td>
+                    <td>{g.hometeam}</td>
+                    <td>{g.awayteam}</td>
+                    <td>{g.gametime}</td>
+                    <td>
+                      <NavLink
+                        to={`/admin/game/${g.id}`}
+                        className="btn btn-success"
+                      >
+                        Edit Game
+                      </NavLink>
+                    </td>
+                    <td>
+                      <NavLink
+                        to={`/admin/game/${g.id}/updatescore`}
+                        className="btn btn-info"
+                      >
+                        Update Score
+                      </NavLink>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
         </div>
       </div>
       <div className="row">
