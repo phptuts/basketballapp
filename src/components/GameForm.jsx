@@ -2,6 +2,13 @@ import { Form, useActionData } from "react-router-dom";
 
 const GameForm = ({ title, game }) => {
   const formErrors = useActionData();
+  let gametimeDefault;
+  if (game?.gametime) {
+    let gametime = new Date(game.gametime);
+    gametime.setMinutes(gametime.getMinutes() - gametime.getTimezoneOffset());
+    gametimeDefault = gametime.toISOString().slice(0, 16);
+  }
+
   return (
     <>
       <div className="row">
@@ -27,7 +34,7 @@ const GameForm = ({ title, game }) => {
               }
             />
             {formErrors?.hometeam && (
-              <div class="invalid-feedback">{formErrors.hometeam}</div>
+              <div className="invalid-feedback">{formErrors.hometeam}</div>
             )}
           </div>
           <div className="col-6">
@@ -46,7 +53,7 @@ const GameForm = ({ title, game }) => {
               }
             />
             {formErrors?.awayteam && (
-              <div class="invalid-feedback">{formErrors.awayteam}</div>
+              <div className="invalid-feedback">{formErrors.awayteam}</div>
             )}
           </div>
         </div>
@@ -57,17 +64,17 @@ const GameForm = ({ title, game }) => {
             </label>
             <input
               name="gametime"
-              defaultValue={game?.gametime}
+              defaultValue={gametimeDefault}
               className={
                 !formErrors?.gametime
                   ? "form-control"
                   : "form-control is-invalid"
               }
-              type="text"
+              type="datetime-local"
               id="gametime"
             />
             {formErrors?.gametime && (
-              <div class="invalid-feedback">{formErrors.gametime}</div>
+              <div className="invalid-feedback">{formErrors.gametime}</div>
             )}
           </div>
         </div>

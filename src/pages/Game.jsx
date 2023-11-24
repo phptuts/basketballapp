@@ -2,6 +2,7 @@ import { useLoaderData } from "react-router-dom";
 
 const Game = () => {
   const game = useLoaderData();
+  game.gametimeDisplay = new Date(game.gametime).toLocaleString();
   return (
     <>
       <div className="row">
@@ -16,7 +17,7 @@ const Game = () => {
         <>
           <div className="row">
             <div className="col">
-              <h2>Game Starts: {game.gametime}</h2>
+              <h2>Game Starts: {game.gametimeDisplay}</h2>
             </div>
           </div>
           <hr />

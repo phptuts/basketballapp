@@ -2,10 +2,12 @@ import { redirect } from "react-router-dom";
 
 export const submitGameToServer = async (request, url, method) => {
   const formdata = await request.formData();
+  let gametime = formdata.get("gametime");
+  const gametimestamp = new Date(gametime).getTime();
   const json = {
     hometeam: formdata.get("hometeam"),
     awayteam: formdata.get("awayteam"),
-    gametime: formdata.get("gametime"),
+    gametime: gametimestamp,
   };
   const response = await fetch(url, {
     method,

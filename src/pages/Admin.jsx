@@ -23,7 +23,10 @@ export const adminLoader = async ({ request }) => {
 
 const Admin = () => {
   const response = useLoaderData();
-  console.log(response, "response");
+  let games = response.data;
+  games = games.map((g) => {
+    return { ...g, gametimeDisplay: new Date(g.gametime).toLocaleString() };
+  });
   return (
     <>
       <div className="row">
@@ -33,7 +36,7 @@ const Admin = () => {
       </div>
       <div className="row">
         <div className="col">
-          <table class="table table-striped">
+          <table className="table table-striped">
             <thead>
               <tr>
                 <th>#</th>
@@ -45,13 +48,13 @@ const Admin = () => {
               </tr>
             </thead>
             <tbody>
-              {response.data.map((g) => {
+              {games.map((g) => {
                 return (
                   <tr key={g.id}>
                     <td>{g.id}</td>
                     <td>{g.hometeam}</td>
                     <td>{g.awayteam}</td>
-                    <td>{g.gametime}</td>
+                    <td>{g.gametimeDisplay}</td>
                     <td>
                       <NavLink
                         to={`/admin/game/${g.id}`}

@@ -78,7 +78,7 @@ const Login = () => {
             }
           />
           {formErrors.email && (
-            <div class="invalid-feedback">{formErrors.email}</div>
+            <div className="invalid-feedback">{formErrors.email}</div>
           )}
         </div>
       </div>
@@ -97,7 +97,7 @@ const Login = () => {
             }
           />
           {formErrors.password && (
-            <div class="invalid-feedback">{formErrors.password}</div>
+            <div className="invalid-feedback">{formErrors.password}</div>
           )}
         </div>
       </div>
@@ -111,7 +111,7 @@ const Login = () => {
       {loginFailed && (
         <div className="row">
           <div className="col">
-            <div class="alert alert-danger" role="alert">
+            <div className="alert alert-danger" role="alert">
               Invalid email or password.
             </div>
           </div>
