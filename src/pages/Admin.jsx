@@ -1,4 +1,5 @@
 import { NavLink, useLoaderData } from "react-router-dom";
+import Pagination from "../components/Pagination";
 
 /**
  * @param {{request: Request}} param0
@@ -74,12 +75,8 @@ const Admin = () => {
           </table>
         </div>
       </div>
-      <div className="row">
-        <div className="col">
-          <NavLink to="/admin?page=2">Page 2</NavLink>
-          <NavLink to="/admin?page=3">Page 3</NavLink>
-        </div>
-      </div>
+
+      <Pagination meta={response.meta} />
     </>
   );
 };

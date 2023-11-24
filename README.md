@@ -786,3 +786,14 @@ https://webtips.dev/solutions/send-query-params-in-get-and-post-in-javascript
 ## Challenge 44
 
 Create a table to display the admin page. Each row should have an id, home team, an away team, game time, edit link, and update score link.
+
+## Challenge 45
+
+Create bootstrap pagination component and use it on the admin page.
+https://getbootstrap.com/docs/5.3/components/pagination/
+
+Hints:
+
+- You can use this stack over question to create the loop you will need for your pagination: https://stackoverflow.com/questions/3895478/does-javascript-have-a-method-like-range-to-generate-a-range-within-the-supp
+- Use the useSearchParams hook to change the pagination. Read the documentation and see if you can keep all the other query parameters in place.
+- Do not use NavLinks or Urls to change the pagination, instead use a function that uses that hook. You can change the a tags to span tags.
