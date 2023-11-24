@@ -298,7 +298,7 @@ Create the login endpoint and the frontend validation. We'll be creating the jwt
 ```html
 <div className="row">
   <div className="col">
-    <div class="alert alert-success" role="alert">
+    <div className="alert alert-success" role="alert">
       Successfully Register!!! Please{" "}
       <NavLink to="/login">login</NavLink>.
     </div>
@@ -797,3 +797,25 @@ Hints:
 - You can use this stack over question to create the loop you will need for your pagination: https://stackoverflow.com/questions/3895478/does-javascript-have-a-method-like-range-to-generate-a-range-within-the-supp
 - Use the useSearchParams hook to change the pagination. Read the documentation and see if you can keep all the other query parameters in place.
 - Do not use NavLinks or Urls to change the pagination, instead use a function that uses that hook. You can change the a tags to span tags.
+
+## Challenge 46
+
+Create a migration migrations that will change the gametime to Date type in sequelize. You will need to delete all of your games before doing this. This will be a required field.
+
+## Challenge 47
+
+Change the game time validation to only use a number.
+
+- Use the Date.now() function to make sure the timestamp you are submitting is in the future.
+- Use this website to create a timestamp and multiply that number 1000. You are submitting the number of milliseconds.
+  https://www.unixtimestamp.com/
+
+## Challenge 48
+
+Fix the forms and display to deal with the new date time refactoring.
+
+- Fix the create and update forms to send a timestamp.
+  - Change the input type to datetime-local
+  - For the create calls calls convert the date time string into a timestamp. You can use the getTime() function. new Date(timestring).getTime(). https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/getTime
+  - For the game time input you will need to convert it into date using this example: https://stackoverflow.com/a/61082536
+  - Fix the displays for the gametime. I used toLocaleString which you can find here: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString

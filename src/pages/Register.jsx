@@ -50,7 +50,7 @@ const Register = () => {
         </div>
         <div className="row">
           <div className="col">
-            <div class="alert alert-success" role="alert">
+            <div className="alert alert-success" role="alert">
               Successfully Register!!! Please{" "}
               <NavLink to="/login">login</NavLink>.
             </div>
@@ -82,7 +82,7 @@ const Register = () => {
             }
           />
           {formErrors.email && (
-            <div class="invalid-feedback">{formErrors.email}</div>
+            <div className="invalid-feedback">{formErrors.email}</div>
           )}
         </div>
       </div>
@@ -101,7 +101,7 @@ const Register = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
           {formErrors.password && (
-            <div class="invalid-feedback">{formErrors.password}</div>
+            <div className="invalid-feedback">{formErrors.password}</div>
           )}
         </div>
       </div>

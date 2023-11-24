@@ -151,7 +151,7 @@ const UpdateScore = () => {
             }
           />
           {formErrors?.hometeamScore && (
-            <div class="invalid-feedback">{formErrors.hometeamScore}</div>
+            <div className="invalid-feedback">{formErrors.hometeamScore}</div>
           )}
         </div>
         <div className="col-6">
@@ -170,7 +170,7 @@ const UpdateScore = () => {
             }
           />
           {formErrors?.awayteamScore && (
-            <div class="invalid-feedback">{formErrors.awayteamScore}</div>
+            <div className="invalid-feedback">{formErrors.awayteamScore}</div>
           )}
         </div>
       </div>
@@ -189,7 +189,7 @@ const UpdateScore = () => {
             }
           />
           {formErrors?.quarter && (
-            <div class="invalid-feedback">{formErrors.quarter}</div>
+            <div className="invalid-feedback">{formErrors.quarter}</div>
           )}
         </div>
         <div className="col">
@@ -206,7 +206,7 @@ const UpdateScore = () => {
             }
           />
           {formErrors?.minutes && (
-            <div class="invalid-feedback">{formErrors.minutes}</div>
+            <div className="invalid-feedback">{formErrors.minutes}</div>
           )}
         </div>
         <div className="col">
@@ -223,7 +223,7 @@ const UpdateScore = () => {
             }
           />
           {formErrors?.seconds && (
-            <div class="invalid-feedback">{formErrors.seconds}</div>
+            <div className="invalid-feedback">{formErrors.seconds}</div>
           )}
         </div>
       </div>
