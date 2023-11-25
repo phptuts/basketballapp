@@ -31,7 +31,7 @@ const Admin = () => {
     <>
       <div className="row">
         <div className="col">
-          <h1>Admin Page</h1>
+          <h1>My Games</h1>
         </div>
       </div>
       <div className="row">

@@ -11,6 +11,9 @@ const Pagination = ({ meta }) => {
       return { ...prev };
     });
   };
+  if (meta.is_first_page && meta.is_last_page) {
+    return <></>;
+  }
   return (
     <div className="row">
       <div className="col">
