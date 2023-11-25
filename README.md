@@ -858,3 +858,7 @@ There are two bugs I want you to fix as well. One is sending null for the user i
 ## Challenge 53
 
 Create a create component for showing the individual games. I am going to keep it simple. Feel free to make this challenge yours.
+
+## Challenge 54
+
+Create a game search bar that will have the type filter and search filter. Use the loader and useSearchParams to get the new page.
