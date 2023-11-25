@@ -3,6 +3,7 @@ import { AuthContext } from "../contexts/auth.context";
 import { getGames } from "../helpers/game.helper";
 import { useLoaderData } from "react-router-dom";
 import Pagination from "../components/Pagination";
+import Game from "../components/Game";
 
 /**
  * @param {{request: Request}} param0
@@ -21,15 +22,9 @@ const Home = () => {
   const response = useLoaderData();
   return (
     <>
-      <div className="row">
-        <div className="col">
-          <ul>
-            {response.data.map((g) => {
-              return <li key={g.id}>{g.hometeam}</li>;
-            })}
-          </ul>
-        </div>
-      </div>
+      {response.data.map((g) => {
+        return <Game key={g.id} game={g} />;
+      })}
       <div className="row">
         <div className="col">
           <Pagination meta={response.meta} />

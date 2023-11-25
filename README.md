@@ -852,3 +852,9 @@ You will want to use ilike for the comparison and not the equal one. Give this y
 Create a home page loader that will take in query parameters and create a get games request. It should be able to handle the search, type, and page query parameters. See if you can re use code.
 
 For now go ahead and load the home teams in an li and load the pagination component.
+
+There are two bugs I want you to fix as well. One is sending null for the user id will break nodejs app. Meaning that if you send a string for the user id it will break. The other is sending the null string for the user id and other query paramters on the frontend.
+
+## Challenge 53
+
+Create a create component for showing the individual games. I am going to keep it simple. Feel free to make this challenge yours.
