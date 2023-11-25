@@ -1,5 +1,6 @@
-import { NavLink, useLoaderData } from "react-router-dom";
+import { NavLink, useLoaderData, useSearchParams } from "react-router-dom";
 import Pagination from "../components/Pagination";
+import { getGames } from "../helpers/game.helper";
 
 /**
  * @param {{request: Request}} param0
@@ -8,22 +9,25 @@ export const adminLoader = async ({ request }) => {
   const urlString = request.url;
   const url = new URL(urlString);
   const pageParam = url.searchParams.get("page");
+  const type = url.searchParams.get("type");
   let page = pageParam ? +pageParam : 1;
   page = page >= 1 ? page : 1;
-
   const userId = +localStorage.getItem("userId");
-  const queryParams = { user_id: userId, page };
-  const fetchUrl =
-    "http://localhost:3000/game?" + new URLSearchParams(queryParams);
 
-  const response = await fetch(fetchUrl);
-
-  return await response.json();
+  return getGames(userId, page, type);
 };
 
 const Admin = () => {
   const response = useLoaderData();
+  const [, setSearchParams] = useSearchParams();
   let games = response.data;
+
+  async function onFilter(e) {
+    const type = e.target.value;
+    setSearchParams((prev) => {
+      return { ...prev, type };
+    });
+  }
   games = games.map((g) => {
     return { ...g, gametimeDisplay: new Date(g.gametime).toLocaleString() };
   });
@@ -32,6 +36,20 @@ const Admin = () => {
       <div className="row">
         <div className="col">
           <h1>My Games</h1>
+        </div>
+      </div>
+      <div className="row">
+        <div className="col">
+          <label htmlFor="fitler" className="form-label">
+            Filter Games
+          </label>
+
+          <select onChange={onFilter} id="fitler" className="form-control">
+            <option value="all">All</option>
+            <option value="live">Live</option>
+            <option value="over">Games Ended</option>
+            <option value="not_started">Not Started</option>
+          </select>
         </div>
       </div>
       <div className="row">

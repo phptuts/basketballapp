@@ -7,8 +7,8 @@ const Pagination = ({ meta }) => {
   const [, setSearchParams] = useSearchParams();
   const gotoPage = (pageNumber) => {
     setSearchParams((prev) => {
-      prev["page"] = pageNumber;
-      return { ...prev };
+      prev.set("page", pageNumber);
+      return prev;
     });
   };
   if (meta.is_first_page && meta.is_last_page) {

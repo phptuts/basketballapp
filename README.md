@@ -819,3 +819,18 @@ Fix the forms and display to deal with the new date time refactoring.
   - For the create calls calls convert the date time string into a timestamp. You can use the getTime() function. new Date(timestring).getTime(). https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/getTime
   - For the game time input you will need to convert it into date using this example: https://stackoverflow.com/a/61082536
   - Fix the displays for the gametime. I used toLocaleString which you can find here: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString
+
+## Challenge 49
+
+Change the h1 of the admin page to say "My Games" and if there is no need for pagination display an empty fragment <></> in the pagination component. You will need adjust the node server.
+
+## Challenge 50
+
+Adjust the games endpoint to accept a type query parameter. ?type=all. There should be 3 types
+
+- all -> means don't filter anything
+- live -> means only show live games
+- over -> means only show games that are over
+- not_started -> means only show games that have not started yet.
+
+Adjust this on the node side and on the react side.

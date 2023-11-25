@@ -1,5 +1,15 @@
 import { redirect } from "react-router-dom";
 
+export const getGames = async (userId = null, page = null, type = null) => {
+  const queryParams = { user_id: userId, page, type };
+  const fetchUrl =
+    "http://localhost:3000/game?" + new URLSearchParams(queryParams);
+
+  const response = await fetch(fetchUrl);
+
+  return await response.json();
+};
+
 export const submitGameToServer = async (request, url, method) => {
   const formdata = await request.formData();
   let gametime = formdata.get("gametime");
