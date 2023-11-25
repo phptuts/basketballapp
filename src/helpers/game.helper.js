@@ -1,9 +1,21 @@
 import { redirect } from "react-router-dom";
 
-export const getGames = async (userId = null, page = null, type = null) => {
-  const queryParams = { user_id: userId, page, type };
+export const getGames = async (
+  userId = null,
+  page = null,
+  type = null,
+  search = null
+) => {
+  const queryParams = { user_id: userId, page, type, search };
+  const nullFilteredQueryParams = {};
+  for (var key in queryParams) {
+    if (queryParams[key]) {
+      nullFilteredQueryParams[key] = queryParams[key];
+    }
+  }
   const fetchUrl =
-    "http://localhost:3000/game?" + new URLSearchParams(queryParams);
+    "http://localhost:3000/game?" +
+    new URLSearchParams(nullFilteredQueryParams);
 
   const response = await fetch(fetchUrl);
 

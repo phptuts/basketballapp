@@ -834,3 +834,21 @@ Adjust the games endpoint to accept a type query parameter. ?type=all. There sho
 - not_started -> means only show games that have not started yet.
 
 Adjust this on the node side and on the react side.
+
+You will also notice a bug in the pagination. You will need to fix that bug. When you are filter notice that type does not get transfered to the url.
+
+HINT: Use the loader to make the request for the games and not an on change function.
+
+## Challenge 50
+
+Create a optional query parameter called search that will search the hometeam or the awayteam with term that is typed in. It should use or logic meaning:
+
+(hometeam ilike %term% or awayteam ilike %term%)
+
+You will want to use ilike for the comparison and not the equal one. Give this your best shot and if you can't figure it out after 5 or 10 minutes watch the video. :)
+
+## Challenge 52
+
+Create a home page loader that will take in query parameters and create a get games request. It should be able to handle the search, type, and page query parameters. See if you can re use code.
+
+For now go ahead and load the home teams in an li and load the pagination component.
