@@ -862,3 +862,11 @@ Create a create component for showing the individual games. I am going to keep i
 ## Challenge 54
 
 Create a game search bar that will have the type filter and search filter. Use the loader and useSearchParams to get the new page.
+
+## Challenge 55
+
+Whenever a user update a game I want you to send a web socket message with the game the user updated. Pass the web socket server object to the request via middleware. Delete all the code we put into the home endpoint and delete the on message code as well.
+
+## Challenge 56
+
+Using this [webpage](https://javascript.info/websocket) and useContext connect the frontend to web sockets. Your provider for the the context should be wrapped around the AuthProvider. You will want to update the game and the game component so that that game search results and the individual game page changes when you update the game.

@@ -1,7 +1,13 @@
+import { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
+import { GameContext } from "../contexts/game.context";
 
 const Game = () => {
-  const game = useLoaderData();
+  let game = useLoaderData();
+  const updateGame = useContext(GameContext);
+  if (updateGame?.id == game.id) {
+    game = updateGame;
+  }
   game.gametimeDisplay = new Date(game.gametime).toLocaleString();
   return (
     <>

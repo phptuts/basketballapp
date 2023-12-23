@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { GameContext } from "../contexts/game.context";
 
 const Game = ({ game }) => {
   const navigate = useNavigate();
+  const updateGame = useContext(GameContext);
+  if (updateGame?.id == game.id) {
+    game = updateGame;
+  }
   game.gametimeDisplay = new Date(game.gametime).toLocaleString();
   const gameTime = (
     <div className="col">

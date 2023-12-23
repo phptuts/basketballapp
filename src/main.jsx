@@ -15,6 +15,7 @@ import Logout from "./pages/Logout.jsx";
 import UpdateScore, { gameLoader } from "./pages/UpdateScore.jsx";
 import UpdateGame, { updateGameAction } from "./pages/UpdateGame.jsx";
 import Game from "./pages/Game.jsx";
+import GameProvider from "./contexts/game.context.jsx";
 
 const router = createBrowserRouter([
   {
@@ -90,8 +91,10 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <AuthProvider>
-      <RouterProvider router={router}></RouterProvider>
-    </AuthProvider>
+    <GameProvider>
+      <AuthProvider>
+        <RouterProvider router={router}></RouterProvider>
+      </AuthProvider>
+    </GameProvider>
   </React.StrictMode>
 );
