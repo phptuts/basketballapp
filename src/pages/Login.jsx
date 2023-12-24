@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/auth.context";
+import { serverErrorCheck } from "../helpers/error.helper";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -55,6 +56,8 @@ const Login = () => {
       setLoginFailed(true);
       return;
     }
+
+    await serverErrorCheck(response);
   }
   return (
     <>

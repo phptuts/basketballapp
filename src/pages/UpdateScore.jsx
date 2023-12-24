@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { useLoaderData, useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../contexts/auth.context";
 import { toast } from "react-toastify";
+import { serverErrorCheck } from "../helpers/error.helper";
 const UpdateScore = () => {
   const gameData = useLoaderData();
   const { userId } = useContext(AuthContext);
@@ -89,6 +90,8 @@ const UpdateScore = () => {
     if (response.status == 403) {
       navigate("/logout");
     }
+
+    await serverErrorCheck(response);
   }
 
   if (hideForm) {

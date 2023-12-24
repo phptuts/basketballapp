@@ -895,3 +895,7 @@ Create an error page using the errorElement in react router dom. Use the useRout
 - Move the gameloader from UpdateScore.jsx file to to the game.helper.js file.
 - When the user goes to a page that does not exist show a "Page Not Found" in the h1 of the error page.
 - When a user goes to a game that does not exist throw a new Error that says game not found.
+
+## Challenge 60
+
+Create a function called serverErrorCheck that will see if the response has a status of 500. If it does it will throw an error. If there is an id in the error message then display the id to the user, otherwise say unknown error.

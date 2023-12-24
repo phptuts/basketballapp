@@ -1,4 +1,5 @@
 import { redirect } from "react-router-dom";
+import { serverErrorCheck } from "./error.helper";
 
 export const getGames = async (
   userId = null,
@@ -18,6 +19,7 @@ export const getGames = async (
     new URLSearchParams(nullFilteredQueryParams);
 
   const response = await fetch(fetchUrl);
+  await serverErrorCheck(response);
 
   return await response.json();
 };
@@ -48,6 +50,7 @@ export const submitGameToServer = async (request, url, method) => {
     const responseJson = await response.json();
     return responseJson.errors;
   }
+  await serverErrorCheck(response);
 
   const gameJson = await response.json();
 
@@ -61,6 +64,8 @@ export const gameLoader = async ({ params }) => {
   if (gameResponse.status == 404) {
     throw new Error("Game not found!");
   }
+  await serverErrorCheck(gameResponse);
+
   const gameData = await gameResponse.json();
   return gameData.data;
 };

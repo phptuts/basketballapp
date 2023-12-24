@@ -38,6 +38,8 @@ const Register = () => {
       }
       setFormErrors(erorrs);
     }
+
+    await serverErrorCheck(response);
   }
 
   if (registerSuccess) {
