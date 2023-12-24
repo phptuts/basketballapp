@@ -12,11 +12,12 @@ import ProtectedRoute from "./components/ProtectedRoute.jsx";
 import Admin, { adminLoader } from "./pages/Admin.jsx";
 import AddGame, { addGameAction } from "./pages/AddGame.jsx";
 import Logout from "./pages/Logout.jsx";
-import UpdateScore, { gameLoader } from "./pages/UpdateScore.jsx";
+import UpdateScore from "./pages/UpdateScore.jsx";
 import UpdateGame, { updateGameAction } from "./pages/UpdateGame.jsx";
 import Game from "./pages/Game.jsx";
 import GameProvider from "./contexts/game.context.jsx";
 import ErrorPage from "./pages/ErrorPage.jsx";
+import { gameLoader } from "./helpers/game.helper.js";
 
 const router = createBrowserRouter([
   {

@@ -53,3 +53,14 @@ export const submitGameToServer = async (request, url, method) => {
 
   return redirect(`/game/${gameJson.data.id}`);
 };
+
+export const gameLoader = async ({ params }) => {
+  const gameResponse = await fetch(
+    `http://localhost:3000/game/${params.gameId}`
+  );
+  if (gameResponse.status == 404) {
+    throw new Error("Game not found!");
+  }
+  const gameData = await gameResponse.json();
+  return gameData.data;
+};

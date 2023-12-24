@@ -889,3 +889,9 @@ Using error middleware create a middleware to handle errors. It should be used c
 ## Challenge 58
 
 Create an error page using the errorElement in react router dom. Use the useRouteError hook to get the error and display the error message. Use the App.jsx jsx to help create the error page. Here is the [documenation](https://reactrouter.com/en/main/route/error-element) for errorElement.
+
+## Challenge 59
+
+- Move the gameloader from UpdateScore.jsx file to to the game.helper.js file.
+- When the user goes to a page that does not exist show a "Page Not Found" in the h1 of the error page.
+- When a user goes to a game that does not exist throw a new Error that says game not found.

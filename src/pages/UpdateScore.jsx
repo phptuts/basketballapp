@@ -1,24 +1,7 @@
 import { useContext, useEffect, useState } from "react";
-import {
-  redirect,
-  useLoaderData,
-  useNavigate,
-  useParams,
-} from "react-router-dom";
+import { useLoaderData, useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../contexts/auth.context";
 import { toast } from "react-toastify";
-
-export const gameLoader = async ({ params }) => {
-  const gameResponse = await fetch(
-    `http://localhost:3000/game/${params.gameId}`
-  );
-  if (gameResponse.status == 404) {
-    return redirect("/not-found");
-  }
-  const gameData = await gameResponse.json();
-  return gameData.data;
-};
-
 const UpdateScore = () => {
   const gameData = useLoaderData();
   const { userId } = useContext(AuthContext);
