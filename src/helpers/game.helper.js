@@ -15,7 +15,8 @@ export const getGames = async (
     }
   }
   const fetchUrl =
-    "http://localhost:3000/game?" +
+    import.meta.env.VITE_API_URL +
+    "/game?" +
     new URLSearchParams(nullFilteredQueryParams);
 
   const response = await fetch(fetchUrl);
@@ -59,7 +60,7 @@ export const submitGameToServer = async (request, url, method) => {
 
 export const gameLoader = async ({ params }) => {
   const gameResponse = await fetch(
-    `http://localhost:3000/game/${params.gameId}`
+    `${import.meta.env.VITE_API_URL}/game/${params.gameId}`
   );
   if (gameResponse.status == 404) {
     throw new Error("Game not found!");

@@ -4,7 +4,7 @@ export const GameContext = createContext();
 
 const GameProvider = ({ children }) => {
   const [updatedGame, setUpdateGame] = useState(null);
-  const ws = new WebSocket("ws://localhost:3000");
+  const ws = new WebSocket(import.meta.env.VITE_WEB_SOCKET_URL);
   ws.onopen = function () {
     console.log("open connection");
   };

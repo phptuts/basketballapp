@@ -9,7 +9,7 @@ import { submitGameToServer } from "../helpers/game.helper";
 export const addGameAction = async ({ request }) => {
   return await submitGameToServer(
     request,
-    "http://localhost:3000/game",
+    import.meta.env.VITE_API_URL + "/game",
     "POST"
   );
 };

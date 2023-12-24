@@ -45,19 +45,22 @@ const UpdateScore = () => {
 
   async function onStartGame() {
     await updateGame(
-      `http://localhost:3000/game/${gameId}/start`,
+      import.meta.env.VITE_API_URL + `/game/${gameId}/start`,
       "Game Started!"
     );
     setHideForm(false);
   }
 
   async function onEndGame() {
-    await updateGame(`http://localhost:3000/game/${gameId}/end`, "Game Ended!");
+    await updateGame(
+      `${import.meta.env.VITE_API_URL}/game/${gameId}/end`,
+      "Game Ended!"
+    );
   }
 
   async function onSubmit() {
     await updateGame(
-      `http://localhost:3000/game/${gameId}/updatescore`,
+      `${import.meta.env.VITE_API_URL}/game/${gameId}/updatescore`,
       "Game updated!",
       formData
     );

@@ -15,7 +15,7 @@ const Register = () => {
 
   async function onSubmit() {
     const registerFormObj = { email, password };
-    const response = await fetch("http://localhost:3000/users", {
+    const response = await fetch(import.meta.env.VITE_API_URL + "/users", {
       method: "POST",
       body: JSON.stringify(registerFormObj),
       headers: {

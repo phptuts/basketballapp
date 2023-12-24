@@ -5,7 +5,7 @@ import { submitGameToServer } from "../helpers/game.helper";
 export const updateGameAction = async ({ params, request }) => {
   return await submitGameToServer(
     request,
-    `http://localhost:3000/game/${params.gameId}`,
+    import.meta.env.VITE_API_URL + `/game/${params.gameId}`,
     "PUT"
   );
 };
