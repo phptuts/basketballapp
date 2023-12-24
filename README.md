@@ -870,3 +870,22 @@ Whenever a user update a game I want you to send a web socket message with the g
 ## Challenge 56
 
 Using this [webpage](https://javascript.info/websocket) and useContext connect the frontend to web sockets. Your provider for the the context should be wrapped around the AuthProvider. You will want to update the game and the game component so that that game search results and the individual game page changes when you update the game.
+
+## Challenge 57
+
+Using error middleware create a middleware to handle errors. It should be used close to the bottom of your app, next to the .listen. Use this as a [guide](https://expressjs.com/en/guide/error-handling.html). Log out the error and be sure to return a response that looks like this with a unique id. Use [uuid](https://www.npmjs.com/package/uuid) library to create the unique id. Throw an Error in one of the controllers to test it out. Take out the error once you are done.
+
+### Example Response
+
+```json
+{
+  "meta": {
+    "type": "error"
+  },
+  "data": "f87e806a-e110-4108-a699-a136e525bda1"
+}
+```
+
+## Challenge 58
+
+Create an error page using the errorElement in react router dom. Use the useRouteError hook to get the error and display the error message. Use the App.jsx jsx to help create the error page. Here is the [documenation](https://reactrouter.com/en/main/route/error-element) for errorElement.

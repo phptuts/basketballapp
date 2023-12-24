@@ -16,11 +16,13 @@ import UpdateScore, { gameLoader } from "./pages/UpdateScore.jsx";
 import UpdateGame, { updateGameAction } from "./pages/UpdateGame.jsx";
 import Game from "./pages/Game.jsx";
 import GameProvider from "./contexts/game.context.jsx";
+import ErrorPage from "./pages/ErrorPage.jsx";
 
 const router = createBrowserRouter([
   {
     element: <App />,
     path: "/",
+    errorElement: <ErrorPage />,
     children: [
       {
         index: true,
