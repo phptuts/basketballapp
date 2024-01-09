@@ -577,7 +577,7 @@ Create the update score game page.
 </>
 ```
 
-## Challenge 34
+## Challenge 35
 
 Create update score endpoint
 
@@ -617,7 +617,7 @@ Create update score endpoint
 }
 ```
 
-## Challenge 35
+## Challenge 36
 
 Connect the updatescore endpoint to the updatescore form. Use the react toastify library to show if the form was successfully submitted. https://fkhadra.github.io/react-toastify/installation
 
@@ -627,11 +627,11 @@ Pass a some text in for the number field. You will notice you get an ulgy error 
 
 https://github.com/jquense/yup/issues/211#issuecomment-464253977
 
-## Challenge 36
+## Challenge 37
 
 When you submit a form with an error and resubmit the form without an error the error validation message on the form should go away.
 
-## Challenge 37
+## Challenge 38
 
 Create the edit game endpoint.
 
@@ -677,7 +677,7 @@ The response should look like this:
 }
 ```
 
-## Challenge 38
+## Challenge 39
 
 Create the update game page.
 
@@ -690,7 +690,7 @@ Create the update game page.
 
 This is a big challenge take your time.
 
-## Challenge 39
+## Challenge 40
 
 Create the game page
 
@@ -701,7 +701,7 @@ Create the game page
 - If the game is isLive or over display the score next to the team names.
 - If both are not set show the game time
 
-## Challenge 40
+## Challenge 41
 
 Create an two endpoints on the node. Try to re use the update function to do this. You will have to refactor it a little bit. This includes and rearranging the parameters of the function.
 
@@ -721,7 +721,7 @@ PUT /game/:id/end
 - requires that the user created the game
 - set isLive to true and isOver to false
 
-## Challenge 41
+## Challenge 42
 
 On the update score page if the game has not started only show a button that says start game. Once the user clicks on the button call the start game endpoint and show the update score form.
 
@@ -729,7 +729,7 @@ It game has started show a button to end the game that will call the end game en
 
 In this challenge I was able to consolidate everything into one function for all the requests. If you are feeling brave you can do that as a bonus.
 
-## Challenge 42
+## Challenge 43
 
 Create a paginated game endpoint. Use this documentation to create the ednpoint. https://sequelize.org/docs/v6/core-concepts/model-querying-finders/#findandcountall
 
@@ -759,7 +759,7 @@ GET /game?page=1&user_id=3
 }
 ```
 
-## Challenge 43
+## Challenge 44
 
 Create an admin page that uses that shows some games with pagination.
 
@@ -783,11 +783,11 @@ const sequelize = new Sequelize(process.env.DB_CONNECTION_STRING, {
 Hint use this article to see if you can find away to send the query params without manually constructing them in the string.
 https://webtips.dev/solutions/send-query-params-in-get-and-post-in-javascript
 
-## Challenge 44
+## Challenge 45
 
 Create a table to display the admin page. Each row should have an id, home team, an away team, game time, edit link, and update score link.
 
-## Challenge 45
+## Challenge 46
 
 Create bootstrap pagination component and use it on the admin page.
 https://getbootstrap.com/docs/5.3/components/pagination/
@@ -798,11 +798,11 @@ Hints:
 - Use the useSearchParams hook to change the pagination. Read the documentation and see if you can keep all the other query parameters in place.
 - Do not use NavLinks or Urls to change the pagination, instead use a function that uses that hook. You can change the a tags to span tags.
 
-## Challenge 46
+## Challenge 47
 
 Create a migration migrations that will change the gametime to Date type in sequelize. You will need to delete all of your games before doing this. This will be a required field.
 
-## Challenge 47
+## Challenge 48
 
 Change the game time validation to only use a number.
 
@@ -810,7 +810,7 @@ Change the game time validation to only use a number.
 - Use this website to create a timestamp and multiply that number 1000. You are submitting the number of milliseconds.
   https://www.unixtimestamp.com/
 
-## Challenge 48
+## Challenge 49
 
 Fix the forms and display to deal with the new date time refactoring.
 
@@ -820,11 +820,11 @@ Fix the forms and display to deal with the new date time refactoring.
   - For the game time input you will need to convert it into date using this example: https://stackoverflow.com/a/61082536
   - Fix the displays for the gametime. I used toLocaleString which you can find here: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString
 
-## Challenge 49
-
-Change the h1 of the admin page to say "My Games" and if there is no need for pagination display an empty fragment <></> in the pagination component. You will need adjust the node server.
-
 ## Challenge 50
+
+Change the h1 of the admin page to say "My Games" and if there is no need for pagination, display an empty fragment <></> in the pagination component. You will need adjust the node server.
+
+## Challenge 51
 
 Adjust the games endpoint to accept a type query parameter. ?type=all. There should be 3 types
 
@@ -839,7 +839,7 @@ You will also notice a bug in the pagination. You will need to fix that bug. Whe
 
 HINT: Use the loader to make the request for the games and not an on change function.
 
-## Challenge 50
+## Challenge 52
 
 Create a optional query parameter called search that will search the hometeam or the awayteam with term that is typed in. It should use or logic meaning:
 
@@ -847,7 +847,7 @@ Create a optional query parameter called search that will search the hometeam or
 
 You will want to use ilike for the comparison and not the equal one. Give this your best shot and if you can't figure it out after 5 or 10 minutes watch the video. :)
 
-## Challenge 52
+## Challenge 53
 
 Create a home page loader that will take in query parameters and create a get games request. It should be able to handle the search, type, and page query parameters. See if you can re use code.
 
@@ -855,23 +855,23 @@ For now go ahead and load the home teams in an li and load the pagination compon
 
 There are two bugs I want you to fix as well. One is sending null for the user id will break nodejs app. Meaning that if you send a string for the user id it will break. The other is sending the null string for the user id and other query paramters on the frontend.
 
-## Challenge 53
+## Challenge 54
 
 Create a create component for showing the individual games. I am going to keep it simple. Feel free to make this challenge yours.
 
-## Challenge 54
+## Challenge 55
 
 Create a game search bar that will have the type filter and search filter. Use the loader and useSearchParams to get the new page.
 
-## Challenge 55
+## Challenge 56
 
 Whenever a user update a game I want you to send a web socket message with the game the user updated. Pass the web socket server object to the request via middleware. Delete all the code we put into the home endpoint and delete the on message code as well.
 
-## Challenge 56
+## Challenge 57
 
 Using this [webpage](https://javascript.info/websocket) and useContext connect the frontend to web sockets. Your provider for the the context should be wrapped around the AuthProvider. You will want to update the game and the game component so that that game search results and the individual game page changes when you update the game.
 
-## Challenge 57
+## Challenge 58
 
 Using error middleware create a middleware to handle errors. It should be used close to the bottom of your app, next to the .listen. Use this as a [guide](https://expressjs.com/en/guide/error-handling.html). Log out the error and be sure to return a response that looks like this with a unique id. Use [uuid](https://www.npmjs.com/package/uuid) library to create the unique id. Throw an Error in one of the controllers to test it out. Take out the error once you are done.
 
@@ -886,16 +886,16 @@ Using error middleware create a middleware to handle errors. It should be used c
 }
 ```
 
-## Challenge 58
+## Challenge 59
 
 Create an error page using the errorElement in react router dom. Use the useRouteError hook to get the error and display the error message. Use the App.jsx jsx to help create the error page. Here is the [documenation](https://reactrouter.com/en/main/route/error-element) for errorElement.
 
-## Challenge 59
+## Challenge 60
 
 - Move the gameloader from UpdateScore.jsx file to to the game.helper.js file.
 - When the user goes to a page that does not exist show a "Page Not Found" in the h1 of the error page.
 - When a user goes to a game that does not exist throw a new Error that says game not found.
 
-## Challenge 60
+## Challenge 61
 
 Create a function called serverErrorCheck that will see if the response has a status of 500. If it does it will throw an error. If there is an id in the error message then display the id to the user, otherwise say unknown error.
